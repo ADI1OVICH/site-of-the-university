@@ -6,6 +6,58 @@
     <title>Korkyt Ata Kyzylorda University</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Language Selector Styles */
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .language-btn {
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: #cbd5e1;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover,
+        .language-btn.active {
+            background: rgba(34, 211, 238, 0.2);
+            color: #22d3ee;
+            border-color: #22d3ee;
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-left: 0;
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+
+        /* Special styling for Enactus card */
+        .enactus-card {
+            position: relative;
+        }
+
+        .enactus-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .enactus-card:hover .enactus-logo {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Animated Background -->
@@ -17,18 +69,23 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-          <div class="logo">
-             <img src="img/logo.png" alt="Логотип университета" style="height: 50px; width: 50px;"> 
+            <div class="logo">
+                <img src="img/logo.png" alt="Логотип университета" style="height: 50px; width: 50px;"> 
             </div>
-            <span class="logo-text">Korkyt Ata University</span>
+            <span class="logo-text" data-translate="university_name">Korkyt Ata Kyzylorda University</span>
             <nav class="nav" id="nav">
-                <a href="#resources" class="nav-link">Ресурсы</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#clubs" class="nav-link">Клубы</a>
-                <a href="#dormitories" class="nav-link">Общежития</a>
-                <a href="#contacts" class="nav-link">Контакты</a>
-                <a href="#calculator" class="nav-link">Калькулятор</a>
-                <a href="#contact" class="nav-link">Вопрос</a>
+                <a href="#resources" class="nav-link" data-translate="nav_resources">Ресурсы</a>
+                <a href="#faq" class="nav-link" data-translate="nav_faq">FAQ</a>
+                <a href="#clubs" class="nav-link" data-translate="nav_clubs">Клубы</a>
+                <a href="#dormitories" class="nav-link" data-translate="nav_dormitories">Общежития</a>
+                <a href="#contacts" class="nav-link" data-translate="nav_contacts">Контакты</a>
+                <a href="#calculator" class="nav-link" data-translate="nav_calculator">Калькулятор</a>
+                <a href="#contact" class="nav-link" data-translate="nav_question">Вопрос</a>
+                <div class="language-selector">
+                    <button class="language-btn active" onclick="changeLanguage('ru')">RU</button>
+                    <button class="language-btn" onclick="changeLanguage('kz')">KZ</button>
+                    <button class="language-btn" onclick="changeLanguage('en')">EN</button>
+                </div>
             </nav>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
@@ -41,21 +98,20 @@
         <div class="hero-content fade-in-up">
             <div class="badge">
                 <i class="fas fa-sparkles"></i>
-                Добро пожаловать в будущее образования
+                <span data-translate="hero_badge">Добро пожаловать в будущее образования</span>
             </div>
             <h1 class="hero-title">
-                Всё для студентов<br>
-                Коркыт Ата
+                <span data-translate="hero_title">Всё для студентов<br>Коркыт Ата</span>
             </h1>
-            <p class="hero-description">
+            <p class="hero-description" data-translate="hero_description">
                 Современная платформа с ресурсами для учёбы, документооборота и активной студенческой жизни в Кызылорде
             </p>
             <div class="hero-buttons">
                 <a href="#resources" class="btn btn-primary">
-                    Начать изучение
+                    <span data-translate="hero_start_btn">Начать изучение</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="#contact" class="btn btn-outline">
+                <a href="#contact" class="btn btn-outline" data-translate="hero_question_btn">
                     Задать вопрос
                 </a>
             </div>
@@ -65,8 +121,8 @@
     <!-- Resources Section -->
     <section id="resources" class="section">
         <div class="section-header">
-            <h2 class="section-title">Ресурсы для студентов</h2>
-            <p class="section-description">
+            <h2 class="section-title" data-translate="resources_title">Ресурсы для студентов</h2>
+            <p class="section-description" data-translate="resources_description">
                 Все необходимые инструменты и информация для успешной учёбы в одном месте
             </p>
         </div>
@@ -75,8 +131,8 @@
                 <div class="card-icon icon-blue">
                     <i class="fas fa-book-open"></i>
                 </div>
-                <h3 class="card-title">Инструкции по документам</h3>
-                <p class="card-description">
+                <h3 class="card-title" data-translate="documents_title">Инструкции по документам</h3>
+                <p class="card-description" data-translate="documents_description">
                     Пошаговые инструкции для подачи заявок на стипендии, общежития, академический отпуск и другие документы
                 </p>
             </div>
@@ -84,8 +140,8 @@
                 <div class="card-icon icon-purple">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3 class="card-title">Часто задаваемые вопросы</h3>
-                <p class="card-description">
+                <h3 class="card-title" data-translate="faq_title">Часто задаваемые вопросы</h3>
+                <p class="card-description" data-translate="faq_description">
                     Ответы на наиболее частые вопросы студентов о процедурах и требованиях университета
                 </p>
             </div>
@@ -93,8 +149,8 @@
                 <div class="card-icon icon-green">
                     <i class="fas fa-star"></i>
                 </div>
-                <h3 class="card-title">Студенческие клубы</h3>
-                <p class="card-description">
+                <h3 class="card-title" data-translate="clubs_title">Студенческие клубы</h3>
+                <p class="card-description" data-translate="clubs_description">
                     Информация о клубах: Enactus, Жайдарман, Ыбырай, Кыз Жибек и других организациях
                 </p>
             </div>
@@ -102,8 +158,8 @@
                 <div class="card-icon icon-orange">
                     <i class="fas fa-home"></i>
                 </div>
-                <h3 class="card-title">Общежития</h3>
-                <p class="card-description">
+                <h3 class="card-title" data-translate="dormitories_title">Общежития</h3>
+                <p class="card-description" data-translate="dormitories_description">
                     Адреса, условия проживания, фотографии и контактная информация администраторов
                 </p>
             </div>
@@ -111,8 +167,8 @@
                 <div class="card-icon icon-indigo">
                     <i class="fas fa-phone"></i>
                 </div>
-                <h3 class="card-title">Контакты деканатов</h3>
-                <p class="card-description">
+                <h3 class="card-title" data-translate="contacts_title">Контакты деканатов</h3>
+                <p class="card-description" data-translate="contacts_description">
                     Телефоны, email и рабочие часы деканов и секретарей всех институтов
                 </p>
             </div>
@@ -120,8 +176,8 @@
                 <div class="card-icon icon-yellow">
                     <i class="fas fa-award"></i>
                 </div>
-                <h3 class="card-title">Стажировки и стипендии</h3>
-                <p class="card-description">
+                <h3 class="card-title" data-translate="scholarships_title">Стажировки и стипендии</h3>
+                <p class="card-description" data-translate="scholarships_description">
                     Международные программы: Erasmus+, академическая мобильность, гранты МОН РК
                 </p>
             </div>
@@ -133,9 +189,9 @@
         <div class="section-header">
             <div class="badge">
                 <i class="fas fa-brain"></i>
-                Институт Искусственного Интеллекта
+                <span data-translate="ai_institute_badge">Институт Искусственного Интеллекта</span>
             </div>
-            <h2 class="section-title">Директор института</h2>
+            <h2 class="section-title" data-translate="ai_director_title">Директор института</h2>
         </div>
         <div class="director-card">
             <div class="director-content">
@@ -147,23 +203,64 @@
                 <div class="director-info">
                     <div class="director-name">
                         <i class="fas fa-code" style="color: #22d3ee; font-size: 1.5rem;"></i>
-                        <h3 class="director-title">Кулмырзаев Нурлан Серикович</h3>
+                        <h3 class="director-title" data-translate="ai_director_name">Кулмырзаев Нурлан Серикович</h3>
                     </div>
-                    <p class="director-text">
-                        Директор института с 2023 года. Является кандитатом экономических наук. Обучался в значимых вузах и за рубежом, является одним из инициаторов создания бизнес инкубатора Kyzylorda Hub.
+                    <p class="director-text" data-translate="ai_director_bio1">
+                        Директор института с 2023 года. Является кандидатом экономических наук. Обучался в значимых вузах и за рубежом, является одним из инициаторов создания бизнес инкубатора Kyzylorda Hub.
                     </p>
-                    <p class="director-text">
+                    <p class="director-text" data-translate="ai_director_bio2">
                         Под его руководством институт развивает инновационные образовательные программы и международные сотрудничества. Студенты получают доступ к актуальным знаниям в сфере искусственного интеллекта и Data Science.
                     </p>
-                    <p class="director-text">
-                      Под его руководством реализуется программа двойного диплома совместно с Сеульским национальным университетом науки и технологий. Первые четыре семестра студенты обучаются в Казахстане, следующие — в Корее.
-                  </p>
+                    <p class="director-text" data-translate="ai_director_bio3">
+                        Под его руководством реализуется программа двойного диплома совместно с Сеульским национальным университетом науки и технологий. Первые четыре семестра студенты обучаются в Казахстане, следующие — в Корее.
+                    </p>
                     <div class="director-contact">
-                        <a href="mailto:aidyn@korkyt.edu.kz" class="director-email">
+                        <a href="mailto:nurlan.serikovich@korkyt.edu.kz" class="director-email">
                             <i class="fas fa-envelope"></i> nurlan.serikovich@korkyt.edu.kz
                         </a>
                         <span style="color: #94a3b8; font-size: 0.875rem;">
-                            <i class="fas fa-lightbulb"></i> Инновации в образовании
+                            <i class="fas fa-lightbulb"></i>
+                            <span data-translate="innovation_education">Инновации в образовании</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- University Director Section -->
+    <section class="ai-director">
+        <div class="section-header">
+            <h2 class="section-title" data-translate="rector_title">Ректор Кызылординского университета имени Коркыт Ата</h2>
+        </div>
+        <div class="director-card">
+            <div class="director-content">
+                <div class="director-image">
+                    <div class="director-image-wrapper">
+                        <img src="img/rector.jpg" alt="Ректор университета" class="director-img">
+                    </div>
+                </div>
+                <div class="director-info">
+                    <div class="director-name">
+                        <i class="fas fa-graduation-cap" style="color: #22d3ee; font-size: 1.5rem;"></i>
+                        <h3 class="director-title" data-translate="rector_name">Бейбиткуль Сарсемхановна Каримова</h3>
+                    </div>
+                    <p class="director-text" data-translate="rector_bio1">
+                        Председатель Правления – Ректор Кызылординского университета имени Коркыт Ата, кандидат филологических наук.
+                    </p>
+                    <p class="director-text" data-translate="rector_bio2">
+                        Родилась 2 августа 1972 года в селе Шырганак, Алматинская область. В 1994 году окончила Казахский женский педагогический институт по специальности «Русский язык и литература в казахской школе».
+                    </p>
+                    <p class="director-text" data-translate="rector_bio3">
+                        С 2020 года занимает должность ректора Кызылординского университета имени Коркыт Ата. Под её руководством университет впервые вошёл в мировые рейтинги QS World University Rankings и UI Green Metric World University Ranking.
+                    </p>
+                    <div class="director-contact">
+                        <a href="mailto:beibitkul.sarsemhanovna@korkyt.edu.kz" class="director-email">
+                            <i class="fas fa-envelope"></i> beibitkul.sarsemhanovna@korkyt.edu.kz
+                        </a>
+                        <span style="color: #94a3b8; font-size: 0.875rem;">
+                            <i class="fas fa-lightbulb"></i>
+                            <span data-translate="innovation_education">Инновации в образовании</span>
                         </span>
                     </div>
                 </div>
@@ -174,61 +271,61 @@
     <!-- FAQ Section -->
     <section id="faq" class="section">
         <div class="section-header">
-            <h2 class="section-title">Часто задаваемые вопросы</h2>
-            <p class="section-description">Ответы на самые популярные вопросы студентов</p>
+            <h2 class="section-title" data-translate="faq_section_title">Часто задаваемые вопросы</h2>
+            <p class="section-description" data-translate="faq_section_description">Ответы на самые популярные вопросы студентов</p>
         </div>
         <div style="max-width: 800px; margin: 0 auto;">
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFaq(this)">
-                    Как подать заявку на стипендию?
+                    <span data-translate="faq_q1">Как подать заявку на стипендию?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
+                    <div class="faq-answer-content" data-translate="faq_a1">
                         Для подачи заявки на стипендию необходимо обратиться в деканат с документами об успеваемости и заполнить соответствующую форму.
                     </div>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFaq(this)">
-                    Какие документы нужны для заселения в общежитие?
+                    <span data-translate="faq_q2">Какие документы нужны для заселения в общежитие?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
+                    <div class="faq-answer-content" data-translate="faq_a2">
                         Для заселения требуются: паспорт, справка о доходах, медицинская справка, заявление и договор об обучении.
                     </div>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFaq(this)">
-                    Как записаться в студенческий клуб?
+                    <span data-translate="faq_q3">Как записаться в студенческий клуб?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
+                    <div class="faq-answer-content" data-translate="faq_a3">
                         Обратитесь к координаторам клубов или в студенческий совет. Контакты доступны на официальном сайте университета.
                     </div>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFaq(this)">
-                    Где найти расписание занятий?
+                    <span data-translate="faq_q4">Где найти расписание занятий?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
+                    <div class="faq-answer-content" data-translate="faq_a4">
                         Расписание доступно на официальном сайте университета в разделе "Студентам" или в мобильном приложении.
                     </div>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFaq(this)">
-                    Как связаться с деканатом?
+                    <span data-translate="faq_q5">Как связаться с деканатом?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
+                    <div class="faq-answer-content" data-translate="faq_a5">
                         Контакты деканатов указаны в соответствующем разделе сайта. Также можно обратиться лично в рабочие часы.
                     </div>
                 </div>
@@ -239,30 +336,28 @@
     <!-- Clubs Section -->
     <section id="clubs" class="section" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.3), rgba(15, 23, 42, 0.3));">
         <div class="section-header">
-            <h2 class="section-title">Студенческие организации</h2>
-            <p class="section-description">Присоединяйтесь к активной студенческой жизни</p>
+            <h2 class="section-title" data-translate="clubs_section_title">Студенческие организации</h2>
+            <p class="section-description" data-translate="clubs_section_description">Присоединяйтесь к активной студенческой жизни</p>
         </div>
         <div class="card-grid">
-            <div class="card">
-                <div class="card-icon icon-green">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3 class="card-title">Enactus Korkyt Ata</h3>
-                <p class="card-description">Социальное предпринимательство и бизнес-проекты</p>
+            <div class="card enactus-card">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/enactus-dbvSBVc9VFwXEJcKfg7nY5GUf0nlcI.png" alt="Enactus Logo" class="enactus-logo">
+                <h3 class="card-title" data-translate="enactus_title">Enactus Korkyt Ata</h3>
+                <p class="card-description" data-translate="enactus_description">Социальное предпринимательство и бизнес-проекты для создания позитивного воздействия на общество</p>
             </div>
             <div class="card">
                 <div class="card-icon icon-yellow">
                     <i class="fas fa-laugh"></i>
                 </div>
-                <h3 class="card-title">Жайдарман</h3>
-                <p class="card-description">КВН, юмор и творческие выступления</p>
+                <h3 class="card-title" data-translate="zhaidarman_title">Жайдарман</h3>
+                <p class="card-description" data-translate="zhaidarman_description">КВН, юмор и творческие выступления</p>
             </div>
             <div class="card">
                 <div class="card-icon icon-purple">
                     <i class="fas fa-pen-fancy"></i>
                 </div>
-                <h3 class="card-title">Ыбырай ұлттық қоры</h3>
-                <p class="card-description">Студенеская организация для специалистов в области педагогики</p>
+                <h3 class="card-title" data-translate="ybyrai_title">Ыбырай ұлттық қоры</h3>
+                <p class="card-description" data-translate="ybyrai_description">Студенческая организация для специалистов в области педагогики</p>
             </div>
         </div>
     </section>
@@ -270,38 +365,38 @@
     <!-- Dormitories Section -->
     <section id="dormitories" class="section">
         <div class="section-header">
-            <h2 class="section-title">Общежития</h2>
-            <p class="section-description">Комфортное проживание для студентов</p>
+            <h2 class="section-title" data-translate="dormitories_section_title">Общежития</h2>
+            <p class="section-description" data-translate="dormitories_section_description">Комфортное проживание для студентов</p>
         </div>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
             <div class="card">
                 <div class="card-icon icon-orange">
                     <i class="fas fa-home"></i>
                 </div>
-                <h3 class="card-title">Общежитие №1</h3>
+                <h3 class="card-title" data-translate="dorm1_title">Общежитие №1</h3>
                 <p class="card-description">
                     <i class="fas fa-map-marker-alt" style="color: #94a3b8; margin-right: 0.5rem;"></i>
-                    ул. Султана Бейбарса 2а
+                    <span data-translate="dorm1_address">ул. Султана Бейбарса 2а</span>
                 </p>
                 <div style="margin-top: 1rem;">
                     <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">Wi-Fi</span>
-                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">Прачечная</span>
-                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Кухня</span>
+                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;" data-translate="laundry">Прачечная</span>
+                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;" data-translate="kitchen">Кухня</span>
                 </div>
             </div>
             <div class="card">
                 <div class="card-icon icon-orange">
                     <i class="fas fa-home"></i>
                 </div>
-                <h3 class="card-title">Общежитие №2</h3>
+                <h3 class="card-title" data-translate="dorm2_title">Общежитие №2</h3>
                 <p class="card-description">
                     <i class="fas fa-map-marker-alt" style="color: #94a3b8; margin-right: 0.5rem;"></i>
-                    ул. Абая, 66
+                    <span data-translate="dorm2_address">ул. Абая, 66</span>
                 </p>
                 <div style="margin-top: 1rem;">
                     <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">Wi-Fi</span>
-                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">Спортзал</span>
-                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;">Библиотека</span>
+                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;" data-translate="gym">Спортзал</span>
+                    <span style="background: #475569; color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem;" data-translate="library">Библиотека</span>
                 </div>
             </div>
         </div>
@@ -310,17 +405,17 @@
     <!-- Contacts Section -->
     <section id="contacts" class="section" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.3), rgba(15, 23, 42, 0.3));">
         <div class="section-header">
-            <h2 class="section-title">Контакты</h2>
-            <p class="section-description">Свяжитесь с деканатами и администрацией</p>
+            <h2 class="section-title" data-translate="contacts_section_title">Контакты</h2>
+            <p class="section-description" data-translate="contacts_section_description">Свяжитесь с деканатами и администрацией</p>
         </div>
         <div class="card" style="max-width: 600px; margin: 0 auto;">
             <div class="card-icon icon-indigo">
                 <i class="fas fa-phone"></i>
             </div>
-            <h3 class="card-title">Контакты деканатов</h3>
+            <h3 class="card-title" data-translate="deans_contacts_title">Контакты деканатов</h3>
             <p class="card-description">
-                Подробная информация о контактах деканатов всех институтов доступна на официальном сайте университета. 
-                Для получения актуальной информации посетите <a href="https://korkyt.edu.kz" style="color: #22d3ee;">korkyt.edu.kz</a>
+                <span data-translate="deans_contacts_description">Подробная информация о контактах деканатов всех институтов доступна на официальном сайте университета. Для получения актуальной информации посетите</span>
+                <a href="https://korkyt.edu.kz" style="color: #22d3ee;">korkyt.edu.kz</a>
             </p>
         </div>
     </section>
@@ -328,58 +423,64 @@
     <!-- Calculator Section -->
     <section id="calculator" class="calculator">
         <div class="section-header">
-            <h2 class="section-title">Калькулятор стипендии</h2>
-            <p class="section-description">Рассчитайте необходимые баллы для получения стипендии</p>
+            <h2 class="section-title" data-translate="calculator_title">Калькулятор стипендии</h2>
+            <p class="section-description" data-translate="calculator_description">Рассчитайте необходимые баллы для получения стипендии</p>
         </div>
         <div class="calculator-card">
             <div class="calculator-header">
                 <div class="calculator-icon">
                     <i class="fas fa-calculator"></i>
                 </div>
-                <h3 style="color: white; font-size: 1.25rem; font-weight: 600;">Введите ваши баллы</h3>
+                <h3 style="color: white; font-size: 1.25rem; font-weight: 600;" data-translate="calculator_header">Введите ваши баллы</h3>
             </div>
             <div class="form-group">
-                <label class="form-label">Контрольная работа 1</label>
-                <input type="number" id="midterm1" class="form-input" placeholder="Баллы за 1-ю контрольную">
+                <label class="form-label" data-translate="midterm1_label">Контрольная работа 1</label>
+                <input type="number" id="midterm1" class="form-input" data-translate-placeholder="midterm1_placeholder" placeholder="Баллы за 1-ю контрольную">
             </div>
             <div class="form-group">
-                <label class="form-label">Контрольная работа 2</label>
-                <input type="number" id="midterm2" class="form-input" placeholder="Баллы за 2-ю контрольную">
+                <label class="form-label" data-translate="midterm2_label">Контрольная работа 2</label>
+                <input type="number" id="midterm2" class="form-input" data-translate-placeholder="midterm2_placeholder" placeholder="Баллы за 2-ю контрольную">
             </div>
-            <button class="btn btn-primary" style="width: 100%;" onclick="calculateStipend()">
+            <button class="btn btn-primary" style="width: 100%;" onclick="calculateStipend()" data-translate="calculate_btn">
                 Рассчитать
             </button>
             <div id="calc-result" class="calc-result"></div>
         </div>
+        <!-- Новый input в HTML -->
+<div class="form-group">
+  <label class="form-label">Средний балл</label>
+  <input type="number" id="averageGrade" class="form-input" placeholder="Средний балл">
+</div>
+
     </section>
 
     <!-- Contact Form Section -->
     <section id="contact" class="section">
         <div class="section-header">
-            <h2 class="section-title">Задать вопрос</h2>
-            <p class="section-description">Свяжитесь с нами для получения дополнительной информации</p>
+            <h2 class="section-title" data-translate="contact_title">Задать вопрос</h2>
+            <p class="section-description" data-translate="contact_description">Свяжитесь с нами для получения дополнительной информации</p>
         </div>
         <div class="contact-form">
             <div class="contact-header">
                 <div class="contact-icon">
                     <i class="fas fa-envelope"></i>
                 </div>
-                <h3 style="color: white; font-size: 1.25rem; font-weight: 600;">Форма обратной связи</h3>
+                <h3 style="color: white; font-size: 1.25rem; font-weight: 600;" data-translate="contact_form_title">Форма обратной связи</h3>
             </div>
             <form onsubmit="submitForm(event)">
                 <div class="form-group">
-                    <label class="form-label">Ваше имя</label>
-                    <input type="text" class="form-input" placeholder="Введите ваше имя" required>
+                    <label class="form-label" data-translate="name_label">Ваше имя</label>
+                    <input type="text" class="form-input" data-translate-placeholder="name_placeholder" placeholder="Введите ваше имя" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Email</label>
                     <input type="email" class="form-input" placeholder="your@email.com" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Ваш вопрос</label>
-                    <textarea class="form-input form-textarea" placeholder="Опишите ваш вопрос подробно..." required></textarea>
+                    <label class="form-label" data-translate="question_label">Ваш вопрос</label>
+                    <textarea class="form-input form-textarea" data-translate-placeholder="question_placeholder" placeholder="Опишите ваш вопрос подробно..." required></textarea>
                 </div>
-                <button type="submit" class="btn" style="width: 100%; background: linear-gradient(45deg, #8b5cf6, #ec4899); color: white;">
+                <button type="submit" class="btn" style="width: 100%; background: linear-gradient(45deg, #8b5cf6, #ec4899); color: white;" data-translate="submit_btn">
                     Отправить вопрос
                 </button>
             </form>
@@ -393,13 +494,353 @@
                 <div class="footer-logo-icon">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
-                <span style="color: white; font-weight: 600;">Korkyt Ata University</span>
+                <span style="color: white; font-weight: 600;" data-translate="university_name">Korkyt Ata University</span>
             </div>
-            <p class="footer-text">Сайт создан Адилетом Ерланулы • © 2024 Все права защищены</p>
+            <p class="footer-text" data-translate="footer_text">Сайт создан Адилетом Ерланулы • © 2024 Все права защищены</p>
         </div>
     </footer>
 
     <script>
+        // Translations object
+        const translations = {
+            ru: {
+                university_name: "Кызылординский университет имени Коркыт Ата",
+                nav_resources: "Ресурсы",
+                nav_faq: "FAQ",
+                nav_clubs: "Клубы",
+                nav_dormitories: "Общежития",
+                nav_contacts: "Контакты",
+                nav_calculator: "Калькулятор",
+                nav_question: "Вопрос",
+                hero_badge: "Добро пожаловать в будущее образования",
+                hero_title: "Всё для студентов<br>Коркыт Ата",
+                hero_description: "Современная платформа с ресурсами для учёбы, документооборота и активной студенческой жизни в Кызылорде",
+                hero_start_btn: "Начать изучение",
+                hero_question_btn: "Задать вопрос",
+                resources_title: "Ресурсы для студентов",
+                resources_description: "Все необходимые инструменты и информация для успешной учёбы в одном месте",
+                documents_title: "Инструкции по документам",
+                documents_description: "Пошаговые инструкции для подачи заявок на стипендии, общежития, академический отпуск и другие документы",
+                faq_title: "Часто задаваемые вопросы",
+                faq_description: "Ответы на наиболее частые вопросы студентов о процедурах и требованиях университета",
+                clubs_title: "Студенческие клубы",
+                clubs_description: "Информация о клубах: Enactus, Жайдарман, Ыбырай, Кыз Жибек и других организациях",
+                dormitories_title: "Общежития",
+                dormitories_description: "Адреса, условия проживания, фотографии и контактная информация администраторов",
+                contacts_title: "Контакты деканатов",
+                contacts_description: "Телефоны, email и рабочие часы деканов и секретарей всех институтов",
+                scholarships_title: "Стажировки и стипендии",
+                scholarships_description: "Международные программы: Erasmus+, академическая мобильность, гранты МОН РК",
+                ai_institute_badge: "Институт Искусственного Интеллекта",
+                ai_director_title: "Директор института",
+                ai_director_name: "Кулмырзаев Нурлан Серикович",
+                ai_director_bio1: "Директор института с 2023 года. Является кандидатом экономических наук. Обучался в значимых вузах и за рубежом, является одним из инициаторов создания бизнес инкубатора Kyzylorda Hub.",
+                ai_director_bio2: "Под его руководством институт развивает инновационные образовательные программы и международные сотрудничества. Студенты получают доступ к актуальным знаниям в сфере искусственного интеллекта и Data Science.",
+                ai_director_bio3: "Под его руководством реализуется программа двойного диплома совместно с Сеульским национальным университетом науки и технологий. Первые четыре семестра студенты обучаются в Казахстане, следующие — в Корее.",
+                rector_title: "Ректор Кызылординского университета имени Коркыт Ата",
+                rector_name: "Бейбиткуль Сарсемхановна Каримова",
+                rector_bio1: "Председатель Правления – Ректор Кызылординского университета имени Коркыт Ата, кандидат филологических наук.",
+                rector_bio2: "Родилась 2 августа 1972 года в селе Шырганак, Алматинская область. В 1994 году окончила Казахский женский педагогический институт по специальности «Русский язык и литература в казахской школе».",
+                rector_bio3: "С 2020 года занимает должность ректора Кызылординского университета имени Коркыт Ата. Под её руководством университет впервые вошёл в мировые рейтинги QS World University Rankings и UI Green Metric World University Ranking.",
+                innovation_education: "Инновации в образовании",
+                faq_section_title: "Часто задаваемые вопросы",
+                faq_section_description: "Ответы на самые популярные вопросы студентов",
+                faq_q1: "Как подать заявку на стипендию?",
+                faq_a1: "Для подачи заявки на стипендию необходимо обратиться в деканат с документами об успеваемости и заполнить соответствующую форму.",
+                faq_q2: "Какие документы нужны для заселения в общежитие?",
+                faq_a2: "Для заселения требуются: паспорт, справка о доходах, медицинская справка, заявление и договор об обучении.",
+                faq_q3: "Как записаться в студенческий клуб?",
+                faq_a3: "Обратитесь к координаторам клубов или в студенческий совет. Контакты доступны на официальном сайте университета.",
+                faq_q4: "Где найти расписание занятий?",
+                faq_a4: "Расписание доступно на официальном сайте университета в разделе \"Студентам\" или в мобильном приложении.",
+                faq_q5: "Как связаться с деканатом?",
+                faq_a5: "Контакты деканатов указаны в соответствующем разделе сайта. Также можно обратиться лично в рабочие часы.",
+                clubs_section_title: "Студенческие организации",
+                clubs_section_description: "Присоединяйтесь к активной студенческой жизни",
+                enactus_title: "Enactus Korkyt Ata",
+                enactus_description: "Социальное предпринимательство и бизнес-проекты для создания позитивного воздействия на общество",
+                zhaidarman_title: "Жайдарман",
+                zhaidarman_description: "КВН, юмор и творческие выступления",
+                ybyrai_title: "Ыбырай ұлттық қоры",
+                ybyrai_description: "Студенческая организация для специалистов в области педагогики",
+                dormitories_section_title: "Общежития",
+                dormitories_section_description: "Комфортное проживание для студентов",
+                dorm1_title: "Общежитие №1",
+                dorm1_address: "ул. Султана Бейбарса 2а",
+                dorm2_title: "Общежитие №2",
+                dorm2_address: "ул. Абая, 66",
+                laundry: "Прачечная",
+                kitchen: "Кухня",
+                gym: "Спортзал",
+                library: "Библиотека",
+                contacts_section_title: "Контакты",
+                contacts_section_description: "Свяжитесь с деканатами и администрацией",
+                deans_contacts_title: "Контакты деканатов",
+                deans_contacts_description: "Подробная информация о контактах деканатов всех институтов доступна на официальном сайте университета. Для получения актуальной информации посетите",
+                calculator_title: "Калькулятор стипендии",
+                calculator_description: "Рассчитайте необходимые баллы для получения стипендии",
+                calculator_header: "Введите ваши баллы",
+                midterm1_label: "Контрольная работа 1",
+                midterm1_placeholder: "Баллы за 1-ю контрольную",
+                midterm2_label: "Контрольная работа 2",
+                midterm2_placeholder: "Баллы за 2-ю контрольную",
+                calculate_btn: "Рассчитать",
+                contact_title: "Задать вопрос",
+                contact_description: "Свяжитесь с нами для получения дополнительной информации",
+                contact_form_title: "Форма обратной связи",
+                name_label: "Ваше имя",
+                name_placeholder: "Введите ваше имя",
+                question_label: "Ваш вопрос",
+                question_placeholder: "Опишите ваш вопрос подробно...",
+                submit_btn: "Отправить вопрос",
+                footer_text: "Сайт создан Адилетом Ерланулы • © 2024 Все права защищены",
+                calc_result_need: "Нужно набрать {points} баллов на экзамене для получения стипендии",
+                calc_result_enough: "Поздравляем! У вас достаточно баллов для стипендии!",
+                form_success: "Спасибо за ваш вопрос! Мы свяжемся с вами в ближайшее время."
+            },
+            kz: {
+                university_name: "Қорқыт Ата атындағы университет",
+                nav_resources: "Ресурстар",
+                nav_faq: "Жиі қойылатын сұрақтар",
+                nav_clubs: "Клубтар",
+                nav_dormitories: "Жатақханалар",
+                nav_contacts: "Байланыстар",
+                nav_calculator: "Калькулятор",
+                nav_question: "Сұрақ",
+                hero_badge: "Білім беру болашағына қош келдіңіз",
+                hero_title: "Қорқыт Ата<br>студенттеріне арналған бәрі",
+                hero_description: "Қызылордадағы оқу, құжат айналымы және белсенді студенттік өмір үшін ресурстары бар заманауи платформа",
+                hero_start_btn: "Зерттеуді бастау",
+                hero_question_btn: "Сұрақ қою",
+                resources_title: "Студенттерге арналған ресурстар",
+                resources_description: "Табысты оқу үшін қажетті барлық құралдар мен ақпарат бір жерде",
+                documents_title: "Құжаттар бойынша нұсқаулықтар",
+                documents_description: "Стипендия, жатақхана, академиялық демалыс және басқа құжаттарға өтінім беру үшін қадамдық нұсқаулықтар",
+                faq_title: "Жиі қойылатын сұрақтар",
+                faq_description: "Университеттің рәсімдері мен талаптары туралы студенттердің ең жиі қойылатын сұрақтарына жауаптар",
+                clubs_title: "Студенттік клубтар",
+                clubs_description: "Клубтар туралы ақпарат: Enactus, Жайдарман, Ыбырай, Қыз Жібек және басқа ұйымдар",
+                dormitories_title: "Жатақханалар",
+                dormitories_description: "Мекенжайлар, тұру жағдайлары, фотосуреттер және әкімшілердің байланыс ақпараты",
+                contacts_title: "Деканаттардың байланыстары",
+                contacts_description: "Барлық институттардың декандары мен хатшыларының телефондары, электрондық поштасы және жұмыс уақыты",
+                scholarships_title: "Тағылымдамалар мен стипендиялар",
+                scholarships_description: "Халықаралық бағдарламалар: Erasmus+, академиялық ұтқырлық, ҚР БҒМ гранттары",
+                ai_institute_badge: "Жасанды Интеллект Институты",
+                ai_director_title: "Институт директоры",
+                ai_director_name: "Құлмырзаев Нұрлан Серікұлы",
+                ai_director_bio1: "2023 жылдан бері институт директоры. Экономика ғылымдарының кандидаты. Маңызды жоғары оқу орындарында және шетелде білім алған, Қызылорда Hub бизнес-инкубаторын құру бастамашыларының бірі.",
+                ai_director_bio2: "Оның басшылығымен институт инновациялық білім беру бағдарламалары мен халықаралық ынтымақтастықты дамытады. Студенттер жасанды интеллект пен Data Science саласындағы өзекті білімге қол жеткізеді.",
+                ai_director_bio3: "Оның басшылығымен Сеул ұлттық ғылым және технология университетімен бірлесіп қос диплом бағдарламасы іске асырылады. Алғашқы төрт семестр студенттер Қазақстанда, келесі семестрлер Кореяда оқиды.",
+                rector_title: "Қорқыт Ата атындағы Қызылорда университетінің ректоры",
+                rector_name: "Бейбітқұл Сәрсемханқызы Каримова",
+                rector_bio1: "Басқарма төрайымы – Қорқыт Ата атындағы Қызылорда университетінің ректоры, филология ғылымдарының кандидаты.",
+                rector_bio2: "1972 жылы 2 тамызда Алматы облысы Шырғанақ селосында туған. 1994 жылы Қазақ әйелдер педагогикалық институтын «Қазақ мектебіндегі орыс тілі мен әдебиеті» мамандығы бойынша бітірген.",
+                rector_bio3: "2020 жылдан бері Қорқыт Ата атындағы Қызылорда университетінің ректоры қызметін атқарады. Оның басшылығымен университет алғаш рет QS World University Rankings және UI Green Metric World University Ranking әлемдік рейтингтеріне енді.",
+                innovation_education: "Білім берудегі инновациялар",
+                faq_section_title: "Жиі қойылатын сұрақтар",
+                faq_section_description: "Студенттердің ең танымал сұрақтарына жауаптар",
+                faq_q1: "Стипендияға өтінім қалай беруге болады?",
+                faq_a1: "Стипендияға өтінім беру үшін үлгерім туралы құжаттармен деканатқа хабарласып, тиісті нысанды толтыру қажет.",
+                faq_q2: "Жатақханаға орналасу үшін қандай құжаттар қажет?",
+                faq_a2: "Орналасу үшін қажет: паспорт, табыс туралы анықтама, медициналық анықтама, өтінім және оқу туралы шарт.",
+                faq_q3: "Студенттік клубқа қалай тіркелуге болады?",
+                faq_a3: "Клуб координаторларына немесе студенттік кеңеске хабарласыңыз. Байланыстар университеттің ресми сайтында қол жетімді.",
+                faq_q4: "Сабақ кестесін қайдан табуға болады?",
+                faq_a4: "Кесте университеттің ресми сайтында \"Студенттерге\" бөлімінде немесе мобильді қосымшада қол жетімді.",
+                faq_q5: "Деканатпен қалай байланысуға болады?",
+                faq_a5: "Деканаттардың байланыстары сайттың тиісті бөлімінде көрсетілген. Сондай-ақ жұмыс уақытында жеке хабарласуға болады.",
+                clubs_section_title: "Студенттік ұйымдар",
+                clubs_section_description: "Белсенді студенттік өмірге қосылыңыз",
+                enactus_title: "Enactus Қорқыт Ата",
+                enactus_description: "Қоғамға оң әсер ету үшін әлеуметтік кәсіпкерлік және бизнес-жобалар",
+                zhaidarman_title: "Жайдарман",
+                zhaidarman_description: "КВН, әзіл және шығармашылық өнер",
+                ybyrai_title: "Ыбырай ұлттық қоры",
+                ybyrai_description: "Педагогика саласындағы мамандарға арналған студенттік ұйым",
+                dormitories_section_title: "Жатақханалар",
+                dormitories_section_description: "Студенттер үшін жайлы тұрғын жай",
+                dorm1_title: "№1 жатақхана",
+                dorm1_address: "Сұлтан Бейбарыс көшесі 2а",
+                dorm2_title: "№2 жатақхана",
+                dorm2_address: "Абай көшесі, 66",
+                laundry: "Кір жуатын бөлме",
+                kitchen: "Ас үй",
+                gym: "Спорт залы",
+                library: "Кітапхана",
+                contacts_section_title: "Байланыстар",
+                contacts_section_description: "Деканаттар мен әкімшілікпен байланысыңыз",
+                deans_contacts_title: "Деканаттардың байланыстары",
+                deans_contacts_description: "Барлық институттардың деканаттарының байланыстары туралы толық ақпарат университеттің ресми сайтында қол жетімді. Өзекті ақпарат алу үшін",
+                calculator_title: "Стипендия калькуляторы",
+                calculator_description: "Стипендия алу үшін қажетті ұпайларды есептеңіз",
+                calculator_header: "Ұпайларыңызды енгізіңіз",
+                midterm1_label: "1-ші бақылау жұмысы",
+                midterm1_placeholder: "1-ші бақылау жұмысының ұпайлары",
+                midterm2_label: "2-ші бақылау жұмысы",
+                midterm2_placeholder: "2-ші бақылау жұмысының ұпайлары",
+                calculate_btn: "Есептеу",
+                contact_title: "Сұрақ қою",
+                contact_description: "Қосымша ақпарат алу үшін бізбен байланысыңыз",
+                contact_form_title: "Кері байланыс формасы",
+                name_label: "Сіздің атыңыз",
+                name_placeholder: "Атыңызды енгізіңіз",
+                question_label: "Сіздің сұрағыңыз",
+                question_placeholder: "Сұрағыңызды толық сипаттаңыз...",
+                submit_btn: "Сұрақ жіберу",
+                footer_text: "Сайтты Әділет Ерланұлы жасаған • © 2024 Барлық құқықтар қорғалған",
+                calc_result_need: "Стипендия алу үшін емтиханда {points} ұпай жинау қажет",
+                calc_result_enough: "Құттықтаймыз! Сізде стипендия үшін жеткілікті ұпай бар!",
+                form_success: "Сұрағыңыз үшін рахмет! Біз сізбен жақын арада байланысамыз."
+            },
+            en: {
+                university_name: "Korkyt Ata Kyzylorda University",
+                nav_resources: "Resources",
+                nav_faq: "FAQ",
+                nav_clubs: "Clubs",
+                nav_dormitories: "Dormitories",
+                nav_contacts: "Contacts",
+                nav_calculator: "Calculator",
+                nav_question: "Question",
+                hero_badge: "Welcome to the future of education",
+                hero_title: "Everything for<br>Korkyt Ata students",
+                hero_description: "Modern platform with resources for studying, document management and active student life in Kyzylorda",
+                hero_start_btn: "Start exploring",
+                hero_question_btn: "Ask a question",
+                resources_title: "Student Resources",
+                resources_description: "All necessary tools and information for successful studying in one place",
+                documents_title: "Document Instructions",
+                documents_description: "Step-by-step instructions for applying for scholarships, dormitories, academic leave and other documents",
+                faq_title: "Frequently Asked Questions",
+                faq_description: "Answers to the most frequent questions from students about university procedures and requirements",
+                clubs_title: "Student Clubs",
+                clubs_description: "Information about clubs: Enactus, Zhaidarman, Ybyrai, Kyz Zhibek and other organizations",
+                dormitories_title: "Dormitories",
+                dormitories_description: "Addresses, living conditions, photos and contact information of administrators",
+                contacts_title: "Dean's Office Contacts",
+                contacts_description: "Phone numbers, emails and working hours of deans and secretaries of all institutes",
+                scholarships_title: "Internships and Scholarships",
+                scholarships_description: "International programs: Erasmus+, academic mobility, MES RK grants",
+                ai_institute_badge: "Institute of Artificial Intelligence",
+                ai_director_title: "Institute Director",
+                ai_director_name: "Kulmirzaev Nurlan Serikovich",
+                ai_director_bio1: "Director of the institute since 2023. Candidate of Economic Sciences. Studied at leading universities and abroad, one of the initiators of creating the Kyzylorda Hub business incubator.",
+                ai_director_bio2: "Under his leadership, the institute develops innovative educational programs and international cooperation. Students gain access to current knowledge in artificial intelligence and Data Science.",
+                ai_director_bio3: "Under his leadership, a double degree program is implemented jointly with Seoul National University of Science and Technology. The first four semesters students study in Kazakhstan, the following ones - in Korea.",
+                rector_title: "Rector of Korkyt Ata Kyzylorda University",
+                rector_name: "Beibitkul Sarsemkhanovna Karimova",
+                rector_bio1: "Chairman of the Board - Rector of Korkyt Ata Kyzylorda University, Candidate of Philological Sciences.",
+                rector_bio2: "Born on August 2, 1972 in the village of Shyrganak, Almaty region. In 1994, she graduated from the Kazakh Women's Pedagogical Institute with a degree in \"Russian language and literature in Kazakh school\".",
+                rector_bio3: "Since 2020, she has been the rector of Korkyt Ata Kyzylorda University. Under her leadership, the university first entered the world rankings QS World University Rankings and UI Green Metric World University Ranking.",
+                innovation_education: "Innovation in education",
+                faq_section_title: "Frequently Asked Questions",
+                faq_section_description: "Answers to the most popular student questions",
+                faq_q1: "How to apply for a scholarship?",
+                faq_a1: "To apply for a scholarship, you need to contact the dean's office with academic performance documents and fill out the appropriate form.",
+                faq_q2: "What documents are needed for dormitory accommodation?",
+                faq_a2: "For accommodation you need: passport, income certificate, medical certificate, application and study contract.",
+                faq_q3: "How to join a student club?",
+                faq_a3: "Contact club coordinators or the student council. Contacts are available on the university's official website.",
+                faq_q4: "Where to find the class schedule?",
+                faq_a4: "The schedule is available on the university's official website in the \"Students\" section or in the mobile application.",
+                faq_q5: "How to contact the dean's office?",
+                faq_a5: "Dean's office contacts are listed in the corresponding section of the website. You can also contact them personally during working hours.",
+                clubs_section_title: "Student Organizations",
+                clubs_section_description: "Join active student life",
+                enactus_title: "Enactus Korkyt Ata",
+                enactus_description: "Social entrepreneurship and business projects to create positive impact on society",
+                zhaidarman_title: "Zhaidarman",
+                zhaidarman_description: "KVN, humor and creative performances",
+                ybyrai_title: "Ybyrai National Fund",
+                ybyrai_description: "Student organization for specialists in the field of pedagogy",
+                dormitories_section_title: "Dormitories",
+                dormitories_section_description: "Comfortable accommodation for students",
+                dorm1_title: "Dormitory #1",
+                dorm1_address: "Sultan Beibars Street 2a",
+                dorm2_title: "Dormitory #2",
+                dorm2_address: "Abay Street, 66",
+                laundry: "Laundry",
+                kitchen: "Kitchen",
+                gym: "Gym",
+                library: "Library",
+                contacts_section_title: "Contacts",
+                contacts_section_description: "Contact dean's offices and administration",
+                deans_contacts_title: "Dean's Office Contacts",
+                deans_contacts_description: "Detailed information about contacts of dean's offices of all institutes is available on the university's official website. For current information visit",
+                calculator_title: "Scholarship Calculator",
+                calculator_description: "Calculate the required points to receive a scholarship",
+                calculator_header: "Enter your points",
+                midterm1_label: "Midterm 1",
+                midterm1_placeholder: "Points for 1st midterm",
+                midterm2_label: "Midterm 2",
+                midterm2_placeholder: "Points for 2nd midterm",
+                calculate_btn: "Calculate",
+                contact_title: "Ask a Question",
+                contact_description: "Contact us for additional information",
+                contact_form_title: "Feedback Form",
+                name_label: "Your name",
+                name_placeholder: "Enter your name",
+                question_label: "Your question",
+                question_placeholder: "Describe your question in detail...",
+                submit_btn: "Send question",
+                footer_text: "Website created by Adilet Yerlanuly • © 2024 All rights reserved",
+                calc_result_need: "You need to score {points} points on the exam to receive a scholarship",
+                calc_result_enough: "Congratulations! You have enough points for a scholarship!",
+                form_success: "Thank you for your question! We will contact you soon."
+            }
+        };
+
+        let currentLanguage = 'ru';
+
+        // Language switching function
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            
+            // Update active language button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.innerHTML.includes('<br>')) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+
+            // Save language preference
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Load saved language preference
+        function loadLanguagePreference() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang && translations[savedLang]) {
+                changeLanguage(savedLang);
+                document.querySelector(`[onclick="changeLanguage('${savedLang}')"]`).classList.add('active');
+                document.querySelectorAll('.language-btn').forEach(btn => {
+                    if (btn.textContent !== savedLang.toUpperCase()) {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+        }
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const nav = document.getElementById('nav');
@@ -457,27 +898,33 @@
             }
         }
 
-        // Calculator functionality
-        function calculateStipend() {
-            const midterm1 = parseFloat(document.getElementById('midterm1').value) || 0;
-            const midterm2 = parseFloat(document.getElementById('midterm2').value) || 0;
-            const total = midterm1 + midterm2;
-            const needed = 70 - total;
-            const resultDiv = document.getElementById('calc-result');
-            
-            if (needed > 0) {
-                resultDiv.textContent = `Нужно набрать ${needed} баллов на экзамене для получения стипендии`;
-            } else {
-                resultDiv.textContent = 'Поздравляем! У вас достаточно баллов для стипендии!';
-            }
-            
-            resultDiv.classList.add('show');
-        }
+// Обновлённая функция калькулятора
+function calculateStipend() {
+    const averageGrade = parseFloat(document.getElementById('averageGrade').value) || 0;
+    const midterm1 = parseFloat(document.getElementById('midterm1').value) || 0;
+    const midterm2 = parseFloat(document.getElementById('midterm2').value) || 0;
+
+    const weightedScore = averageGrade * 0.4 + midterm1 * 0.1 + midterm2 * 0.1;
+    const neededExamScore = (70 - weightedScore) / 0.4;
+
+    const resultDiv = document.getElementById('calc-result');
+    let resultText;
+
+    if (neededExamScore > 0) {
+        resultText = translations[currentLanguage].calc_result_need.replace('{points}', neededExamScore.toFixed(1));
+    } else {
+        resultText = translations[currentLanguage].calc_result_enough;
+    }
+
+    resultDiv.textContent = resultText;
+    resultDiv.classList.add('show');
+}
+
 
         // Contact form submission
         function submitForm(event) {
             event.preventDefault();
-            alert('Спасибо за ваш вопрос! Мы свяжемся с вами в ближайшее время.');
+            alert(translations[currentLanguage].form_success);
             event.target.reset();
         }
 
@@ -504,10 +951,15 @@
                 header.style.background = 'rgba(15, 23, 42, 0.8)';
             }
         });
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLanguagePreference();
+        });
     </script>
 
-<script>
-  (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="UWeaGfJ757dNwnK2RjAZ9";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-  </script>
+    <script>
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="UWeaGfJ757dNwnK2RjAZ9";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 </body>
 </html>
